@@ -1,1 +1,2 @@
-# jira-app
+# npm install
+# bower install
