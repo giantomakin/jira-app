@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="jiraApp">
+<% include partials/header %>
+<body>
+
+	<!-- Page Content -->
+	<div class="container" ng-controller="issuesCtrl">
+		<div id="loading-wrapper">
+		  <div id="loading-text">LOADING</div>
+		  <div id="loading-content"></div>
+		</div>
+		<div class="row" id="content-div" hidden>
+
+			<!-- Blog Entries Column -->
+			<div class="col-md-12">
+
+				<h1 class="page-header">
+					<%= title %>
+				</h1>
+
+				<div ng-repeat="issue in issues">
+					<h2>
+						<a href="/issue/{{ issue.key }}">{{ issue.fields.summary }} Project</a>
+					</h2>
+					<p class="lead">
+						Issue created by <a href="#">{{ issue.fields.creator.displayName }}</a>
+					</p>
+					<p><span class="glyphicon glyphicon-time"></span> Updated {{issue.updated}}</p>
+					<hr>
+					<img class="img-rounded image-{{issue.id}}" width="900" height="300" src="{{issue.attachment}}" alt="">
+					<hr>
+					<p>{{ issue.fields.description }}</p>
+					<a class="btn btn-warning" href="/issue/{{ issue.key }}">View Issue <span class="glyphicon glyphicon-chevron-right"></span></a>
+
+					<hr>
+				</div>
+				<!-- Pager -->
+<!-- 				<ul class="pager">
+					<li class="previous">
+						<a href="/issue">&larr; Older</a>
+					</li>
+					<li class="next">
+						<a href="/issue">Newer &rarr;</a>
+					</li>
+				</ul> -->
+
+
+			</div>
+
+		</div>
+		<!-- /.row -->
+
+		<hr>
+	</div>
+	<!-- /.container -->
+
+	<% include partials/footer %>
+</body>
+</html>

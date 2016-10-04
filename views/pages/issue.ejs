@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="jiraApp">
+<% include ../partials/header %>
+<body>
+	<div id="wrapper">
+		<!-- Page Content -->
+		<div id="page-content-wrapper">
+			<!-- Page Content -->
+			<div class="container-fluid" ng-controller="issueCtrl">
+				<div id="loading-wrapper">
+				  <div id="loading-text">LOADING</div>
+				  <div id="loading-content"></div>
+				</div>
+				<div class="row" id="content-div" hidden>
+
+					<!-- Blog Entries Column -->
+					<div class="col-md-12">
+						<h1 class="page-header" data-ng-model="summary" style="color:#ea7925; font-size: 42px !important">
+							{{summary}}
+						</h1>
+						<p data-ng-model="updated"><span class="glyphicon glyphicon-time"></span> {{updated}}</p>
+						<input type="hidden" name="key" id="issue-key" value="<%= key %>">
+						<div class="row" style="margin-top:30px">
+							<div class="col-md-4">
+								<div class="panel panel-default panel-custom">
+									<div class="panel-heading panel-heading-custom" style="color:#ea7925; font-size:24px; padding:0px 0px 0px 5px !important"><strong>PROJECT DESCRIPTION</strong></div>
+									<div class="panel-body">
+										<div class="form-group">
+											<textarea data-ng-model="description" class="form-control" rows="10" id="comment" readonly="true" style="font-size:26px; background-color: #fff;">
+												{{description | uppercase}}
+											</textarea>
+										</div>
+									</div>
+								</div>
+								<div class="panel panel-default panel-custom">
+									<div class="panel-heading panel-heading-custom" style="color:#ea7925; font-size:24px; padding:0px 0px 0px 5px !important"><strong>PROJECT PROGRESS</strong></div>
+									<div class="panel-body" style="padding:5px !important">
+										<p style="font-size:18px; margin:0px; padding:0px;"><strong>Drawing Progress:</strong> </p>
+										<div class="progress">
+											<div id="drawing-progress" class="progress-bar massive-font {{drawing_progress}}" role="progressbar" aria-valuenow="{{drawing_value}}"
+											aria-valuemin="0" aria-valuemax="100" style="width:{{drawing_value}}%">
+											{{drawing | uppercase}}
+										</div>
+									</div>
+									<p style="font-size:18px; margin:0px; padding:0px;"><strong>Specification Doc Progress:</strong></p>
+									<div class="progress">
+										<div id="doc-progress" class="progress-bar massive-font {{doc_progress}}" role="progressbar" aria-valuenow="{{doc_value}}"
+										aria-valuemin="0" aria-valuemax="100" style="width:{{doc_value}}%">
+										{{doc | uppercase}}
+									</div>
+								</div>
+								<p style="font-size:18px; margin:0px; padding:0px;"><strong>3D Scene Progress:</strong></p>
+								<div class="progress">
+									<div id="scene-progress" class="progress-bar massive-font {{scene_progress}}" role="progressbar" aria-valuenow="{{total}}"
+									aria-valuemin="{{total}}" aria-valuemax="100" style="width:{{total}}%" >
+									{{total}}%
+								</div>
+							</div>
+
+							<p style="font-size:18px; margin:0px; padding:0px;"><strong>Total Progress:</strong></p>
+							<div class="progress">
+								<div id="total-progress" class="progress-bar massive-font {{total_progressbar}}" role="progressbar" aria-valuenow="{{total_progress}}"
+								aria-valuemin="0" aria-valuemax="100" style="width:{{total_progress}}%">
+								{{total_progress}}%
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="col-md-8">
+
+				<img class="img-responsive center-block" width="100%" height="100%" src="{{attachment}}" alt="Woodbury Estate ">
+
+
+			</div>
+
+		</div>
+
+
+	</div>
+	<!-- /.container -->
+</div>
+<!-- /#page-content-wrapper -->
+</div>
+<!-- /#wrapper -->
+<% include ../partials/footer %>
+</body>
+</html>
