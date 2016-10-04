@@ -1,2 +1,3 @@
-# npm install
-# bower install
+# Installation
+npm install
+bower install
