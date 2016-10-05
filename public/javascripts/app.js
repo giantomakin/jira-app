@@ -42,7 +42,7 @@ app.service('issuesService', function($http){
 app.controller('issuesCtrl', function($scope, $location, issuesService, $element) {
 
 	issuesService.getIssues.then(function(response){
-
+			console.log(response);
 		$element.find('#loading-wrapper').hide();
 		$element.find('#content-div').show();
 
@@ -58,12 +58,12 @@ app.controller('issuesCtrl', function($scope, $location, issuesService, $element
 					issues.attachment = 'http://placehold.it/900x300';
 				}
 
-				issues.updated = moment(issue.fields.created).fromNow();
-
 			});
 
 		});
+
 		$scope.issues = response;
+
 	});
 });
 

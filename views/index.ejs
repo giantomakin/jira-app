@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" ng-app="jiraApp">
+<html lang="en" ng-app="jiraApp" >
 <% include partials/header %>
 <body>
 
@@ -25,9 +25,8 @@
 					<p class="lead">
 						Issue created by <a href="#">{{ issue.fields.creator.displayName }}</a>
 					</p>
-					<p><span class="glyphicon glyphicon-time"></span> Updated {{issue.updated}}</p>
 					<hr>
-					<img class="img-rounded image-{{issue.id}}" width="900" height="300" src="{{issue.attachment}}" alt="">
+					<img class="img-rounded image-{{issue.id}}" width="900" height="300" ng-src="{{issue.attachment}}" alt="">
 					<hr>
 					<p>{{ issue.fields.description }}</p>
 					<a class="btn btn-warning" href="/issue/{{ issue.key }}">View Issue <span class="glyphicon glyphicon-chevron-right"></span></a>

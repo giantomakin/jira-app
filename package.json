@@ -8,10 +8,12 @@
   },
   "dependencies": {
     "body-parser": "~1.15.1",
+    "compression": "^1.6.2",
     "cookie-parser": "~1.4.3",
     "debug": "~2.2.0",
     "ejs": "^2.5.2",
     "express": "~4.13.4",
+    "express-minify": "^0.2.0",
     "install": "^0.8.1",
     "jade": "~1.11.0",
     "jira-connector": "^2.3.0",
