@@ -5,11 +5,11 @@
 
 	<!-- Page Content -->
 	<div class="container" ng-controller="issuesCtrl">
-		<div id="loading-wrapper">
+		<div id="loading-wrapper" ng-show="showloading">
 		  <div id="loading-text">LOADING</div>
 		  <div id="loading-content"></div>
 		</div>
-		<div class="row" id="content-div" hidden>
+		<div class="row animated fadeIn" id="content-div" ng-hide="showloading">
 
 			<!-- Blog Entries Column -->
 			<div class="col-md-12">
@@ -51,7 +51,7 @@
 
 		<hr>
 	</div>
-	<!-- /.container -->
+	<!-- /.container <-->
 
 	<% include partials/footer %>
 </body>

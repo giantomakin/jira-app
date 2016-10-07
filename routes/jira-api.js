@@ -5,11 +5,9 @@ var JiraClient = require('jira-connector');
 var jira = new JiraClient( {
     host: 'housetipster.atlassian.net',
     basic_auth: {
-        username: 'kyle@housetipster.com',
-        password: 'marblerocks44'
+        base64: 'a3lsZUBob3VzZXRpcHN0ZXIuY29tOm1hcmJsZXJvY2tzNDQ='
     }
-});
-
+})
 router.get('/issues', function(req, res) {
 
 	jira.search.search({
@@ -27,6 +25,7 @@ router.get('/issue/:key', function(req, res) {
 	jira.issue.getIssue({
 	    issueKey: req.params.key
 	}, function(error, response) {
+
 	     res.send(response);
 	});
 
