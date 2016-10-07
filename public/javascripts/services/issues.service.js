@@ -33,7 +33,7 @@ angular.module('app.issues.services')
 			throw new Error(response.responseText);
 
 		});
-	}
+	};
 
 
 });

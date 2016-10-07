@@ -2,6 +2,7 @@ var gulp = require('gulp');
 var concat = require('gulp-concat');
 var rename = require('gulp-rename');
 var uglify = require('gulp-uglify');
+var jshint = require('gulp-jshint');
 var ngAnnotate = require('gulp-ng-annotate');
 
 var jsFiles = ['public/javascripts/controllers/*.js',
@@ -11,6 +12,7 @@ var jsFiles = ['public/javascripts/controllers/*.js',
 			  ],
     jsDest = 'public/dist/scripts';
 
+gulp.task('default', ['watch']);
 
 gulp.task('scripts', function() {
     return gulp.src(jsFiles)
@@ -21,3 +23,15 @@ gulp.task('scripts', function() {
     	.pipe(uglify())
     	.pipe(gulp.dest(jsDest));
 });
+
+gulp.task('jshint', function() {
+  return gulp.src(jsFiles)
+    .pipe(jshint())
+    .pipe(jshint.reporter('jshint-stylish'));
+});
+
+
+gulp.task('watch', function() {
+  gulp.watch(jsFiles, ['jshint']);
+});
+

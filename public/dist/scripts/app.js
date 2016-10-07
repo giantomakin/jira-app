@@ -204,7 +204,6 @@ setInterval(function(){
 	renderIssue();
 }, 300000);
 
-
 });
 
 angular.module('app.issues.directives',['ngRoute']);

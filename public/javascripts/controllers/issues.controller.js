@@ -5,7 +5,6 @@ angular.module('app.issues.controllers')
 
 	$scope.showloading = true;
 
-
 	issuesService.getIssues.then(function(response){
 
 		$scope.attachment = [];
@@ -15,7 +14,7 @@ angular.module('app.issues.controllers')
 			issuesService.getIssue(issues.id).then(function(issue){
 
 				if (typeof issue.fields.attachment[0] == 'object') {
-					issues.attachment = issue.fields.attachment[0].content
+					issues.attachment = issue.fields.attachment[0].content;
 				} else {
 					issues.attachment = 'http://placehold.it/900x300';
 				}
@@ -34,8 +33,6 @@ angular.module('app.issues.controllers')
 angular.module('app.issues.controllers')
 .controller('issueCtrl', function($scope, $element, $location, issuesService) {
 
-	$key = $element.find('#issue-key').val();
-
 	$scope.total = 0;
 	$scope.scene_progress = '';
 	$scope.scene_total =0;
@@ -49,6 +46,7 @@ angular.module('app.issues.controllers')
 	$scope.showloading = true;
 	$scope.showcontent = false;
 
+	var $key = $element.find('#issue-key').val();
 	var progress = ['progress-bar-danger progress-bar-striped',
 					'progress-bar-warning progress-bar-striped active',
 					'progress-bar-info progress-bar-striped active',
@@ -56,7 +54,7 @@ angular.module('app.issues.controllers')
 					'progress-bar-success',
 					'progress-bar-danger progress-bar-striped active',
 					'progress-bar-success progress-bar',
-					]
+					];
 
 	function renderIssue(loader){
 
@@ -70,11 +68,11 @@ angular.module('app.issues.controllers')
 			var scenesDeferred = $.Deferred();
 			var drawing = issue.customfield_10205 === null ? 'not-started' : issue.customfield_10205.value;
 			var doc = issue.customfield_10206 === null ? 'not-started' : issue.customfield_10206.value;
-			var doc_val = doc === 'done' ? 100 : 50
+			var doc_val = doc === 'done' ? 100 : 50;
 			var drawing_val = drawing === 'done' ? 100 : 50;
 			var addup = 0;
 
-			if (scenes == null) {
+			if (scenes === null) {
 
 				console.log('no scenes');
 
@@ -89,11 +87,10 @@ angular.module('app.issues.controllers')
 					var _partial = total_value / _overall;
 					var _total = _partial * 100;
 
-					return _total == NaN ? 0 : Math.round(_total) ;
+					return _total == isNaN ? 0 : Math.round(_total) ;
 				});
 
-
-				for(scene in scenesArr){
+				for(var scene in scenesArr){
 					var _scene = scenesArr[scene].split(':');
 					var _key = _scene[0];
 					var _val = _scene[1];
@@ -122,7 +119,7 @@ angular.module('app.issues.controllers')
 				});
 			}
 
-			if ( doc == null ) {
+			if ( doc === null ) {
 
 				console.log('no docs');
 
@@ -138,7 +135,7 @@ angular.module('app.issues.controllers')
 
 			}
 
-			if ( drawing == null ) {
+			if ( drawing === null ) {
 
 				console.log('no drawing');
 
@@ -168,7 +165,7 @@ angular.module('app.issues.controllers')
 				var _partial = _total_value / 300;
 				var _total = _partial * 100;
 
-				return _total == NaN ? 0 : Math.round(_total);
+				return _total == isNaN ? 0 : Math.round(_total);
 			});
 
 
