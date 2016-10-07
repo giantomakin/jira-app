@@ -17,6 +17,7 @@
     "install": "^0.8.1",
     "jade": "~1.11.0",
     "jira-connector": "^2.3.0",
+    "jshint": "^2.9.3",
     "morgan": "~1.7.0",
     "npm": "^3.10.8",
     "serve-favicon": "~2.3.0"

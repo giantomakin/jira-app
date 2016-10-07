@@ -15,7 +15,12 @@ router.get('/issues', function(req, res) {
 	    startAt: '0',
 	    maxResults: '30',
 	}, function(error, response) {
-	    res.send(response);
+		try {
+		  res.send(response);
+		} catch (e) {
+		  res.status(400).send('cant fetch issues');
+		}
+
 	});
 
 
@@ -25,8 +30,11 @@ router.get('/issue/:key', function(req, res) {
 	jira.issue.getIssue({
 	    issueKey: req.params.key
 	}, function(error, response) {
-
-	     res.send(response);
+		try {
+		  res.send(response);
+		} catch (e) {
+		  res.status(400).send('cant fetch issues');
+		}
 	});
 
 });

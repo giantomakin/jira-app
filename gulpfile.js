@@ -32,6 +32,6 @@ gulp.task('jshint', function() {
 
 
 gulp.task('watch', function() {
-  gulp.watch(jsFiles, ['jshint']);
+  gulp.watch(jsFiles, ['jshint','scripts']);
 });
 
