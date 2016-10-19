@@ -78,7 +78,7 @@ angular.module('app.issues.controllers')
     }
 
     renderIssue(true);
-    $timeout(renderIssue() , 10000);
+    $timeout(renderIssue() , 100000);
 
 
 });
