@@ -71,14 +71,15 @@ angular.module('app.issues.controllers')
 
             if (loader) $scope.showloading = false;
             console.log('Beat at ' + new Date().getTime() + 'ms');
-            renderIssue();
+
+            $timeout(function(){renderIssue();},10000);
 
         });
 
     }
 
     renderIssue(true);
-    $timeout(renderIssue() , 100000);
+
 
 
 });
