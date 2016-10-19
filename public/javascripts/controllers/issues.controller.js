@@ -32,7 +32,7 @@ angular.module('app.issues.controllers')
 });
 
 angular.module('app.issues.controllers')
-.controller('issueCtrl', function($scope, $element, $location, issuesService) {
+.controller('issueCtrl', function($scope, $element, $location, $timeout, issuesService) {
 
     $scope.showloading = true;
 
@@ -48,9 +48,7 @@ angular.module('app.issues.controllers')
 
     function renderIssue(loader) {
 
-
         issuesService.getIssue($key).then(function(response) {
-
             var issue = response.fields;
             var scenes = issue.customfield_10201;
             var drawing = issue.customfield_10205 === null ? 'not-started' : issue.customfield_10205.value;
@@ -72,15 +70,15 @@ angular.module('app.issues.controllers')
             issuesService.computeTotal($scope, progress);
 
             if (loader) $scope.showloading = false;
+            console.log('Beat at ' + new Date().getTime() + 'ms');
+            renderIssue();
 
         });
 
     }
 
     renderIssue(true);
-    setInterval(function() {
-        renderIssue();
-    }, 300000);
+    $timeout(renderIssue() , 10000);
 
 
 });
