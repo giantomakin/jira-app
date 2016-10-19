@@ -68,13 +68,12 @@ angular.module('app.issues.controllers')
             $scope.drawing_value = drawing_val;
             $scope.updated = 'updated: ' + moment(issue.updated).fromNow();
             issuesService.computeTotal($scope, progress);
-
-            if (loader) $scope.showloading = false;
-            console.log('Beat at ' + new Date().getTime() + 'ms');
-
-            $timeout(function(){renderIssue();},10000);
-
         });
+
+        if (loader) $scope.showloading = false;
+        console.log('Beat at ' + new Date().getTime() + 'ms');
+
+        $timeout(function(){renderIssue();},10000);
 
     }
 
