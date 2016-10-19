@@ -60,7 +60,7 @@ angular.module('app.issues.controllers')
             issuesService.computeDoc($scope, doc, progress);
             issuesService.computeDrawing($scope, drawing, progress);
             $scope.summary = issue.summary;
-            $scope.description = issue.description;
+            $scope.description = issue.description.replace(/\*/g, ' ');
             $scope.attachment = issue.attachment[0].content;
             $scope.doc = doc;
             $scope.drawing = drawing;
@@ -73,7 +73,7 @@ angular.module('app.issues.controllers')
         if (loader) $scope.showloading = false;
         console.log('Beat at ' + new Date().getTime() + 'ms');
 
-        $timeout(function(){renderIssue();},10000);
+        $timeout(function(){renderIssue();},1000);
 
     }
 
